@@ -96,6 +96,8 @@ export default function Register({ setCurrentPage }: {
 
                 {/* right */}
                 <div className="bg-[#82A0F4] rounded-l-[140px] w-[60%] h-full">
+                    <h1 className="text-4xl font-extrabold text-[#302F2A] mb-8 pl-15 text-white mt-41">Welcome Back!</h1>
+                    <p className="text-white pl-25">Already have an account?</p>
                 </div>
 
             </div>
