@@ -37,6 +37,8 @@ export default function Register({ setCurrentPage }: {
                     <div className="relative w-full mb-4">
                         <input
                             placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             className="border-none bg-[#F2F1F3] w-full h-[5vh] px-[10px] pr-[40px] rounded-[10px]"
                         />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600">
@@ -49,6 +51,8 @@ export default function Register({ setCurrentPage }: {
                     <div className="relative w-full mb-4">
                         <input
                             placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="border-none bg-[#F2F1F3] w-full h-[5vh] px-[10px] pr-[40px] rounded-[10px]"
                         />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600">
@@ -63,6 +67,8 @@ export default function Register({ setCurrentPage }: {
                         <input
                             placeholder="Password"
                             type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             className="border-none bg-[#F2F1F3] w-full h-[5vh] px-[10px] pr-[40px] rounded-[10px]"
                         />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600">
@@ -73,7 +79,7 @@ export default function Register({ setCurrentPage }: {
                     </div>
 
                     {/* button */}
-                    <button className="w-full h-[5vh] bg-[#82A0F4] hover:bg-[#6b8de8] text-white font-semibold rounded-[6px] duration-200">
+                    <button onClick={handleSubmit} className="w-full h-[5vh] bg-[#82A0F4] hover:bg-[#6b8de8] text-white font-semibold rounded-[6px] duration-200">
                         Register
                     </button>
 
@@ -97,12 +103,13 @@ export default function Register({ setCurrentPage }: {
                 {/* right */}
                 <div className="bg-[#82A0F4] rounded-l-[140px] w-[60%] h-full">
                     <h1 className="text-4xl font-extrabold text-[#302F2A] mb-8 pl-15 text-white mt-41">Welcome Back!</h1>
-                    <p className="text-white pl-25">Already have an account?</p>
+                    <p className="text-white pl-25 transform -translate-y-4">Already have an account?</p>
+                    <button onClick={() => setCurrentPage(1)} className="w-[38%] h-[5vh] ml-30 bg-[#82A0F4] hover:bg-[#7599fb] text-white font-semibold rounded-[6px] duration-200 border border-white">
+                        Login
+                    </button>
                 </div>
-
             </div>
         </div>
-
     );
 }
 
