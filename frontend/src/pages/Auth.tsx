@@ -84,9 +84,20 @@ export default function AuthPage() {
 
                 {/* SLIDING OVERLAY */}
                 <div
-                    className={`absolute top-0 h-full z-10 ${isLogin === null ? "" : isLogin ? "overlay-to-left" : "overlay-to-right"}`}
+                    className={`absolute top-0 h-full z-10 ${isLogin ? "overlay-to-left" : "overlay-to-right"}`}
                     style={{ left: "45%", width: "55%", borderRadius: "140px 0 0 140px", background: "#82A0F4" }}
                 >
+                    {/* bubble top-right */}
+                    <div
+                        className="absolute rounded-full"
+                        style={{ width: 280, height: 280, top: -80, right: -80, background: "rgba(255,255,255,0.08)" }}
+                    />
+                    {/* bubble bottom-left */}
+                    <div
+                        className="absolute rounded-full"
+                        style={{ width: 180, height: 180, bottom: -50, left: 10, background: "rgba(255,255,255,0.08)" }}
+                    />
+
                     <div className="relative h-full w-full overflow-hidden flex items-center justify-center">
 
                         {/* register side */}
@@ -101,13 +112,7 @@ export default function AuthPage() {
                         >
                             <h2 className="text-[2rem] font-extrabold text-white mb-2">Welcome Back!</h2>
                             <p className="text-white/80 text-[14px] mb-7">Already have an account?</p>
-                            <button
-                                onClick={() => setIsLogin(true)}
-                                className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent
-                                hover:bg-[#6e92f4] hover:text-white
-                                transition-all duration-300
-                                flex items-center justify-center"
-                            >
+                            <button onClick={() => setIsLogin(true)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#6e92f4] transition-all duration-300">
                                 Login
                             </button>
                         </div>
@@ -124,19 +129,34 @@ export default function AuthPage() {
                         >
                             <h2 className="text-[2rem] font-extrabold text-white mb-2">Welcome Back!</h2>
                             <p className="text-white/80 text-[14px] mb-7">Don't have an account?</p>
-                            <button
-                                onClick={() => setIsLogin(false)}
-                                className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent 
-                                hover:bg-[#6e92f4] hover:text-white
-                                transition-all duration-300 
-                                flex items-center justify-center"
-                            >
+                            <button onClick={() => setIsLogin(false)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#6e92f4] transition-all duration-300">
                                 Register
                             </button>
                         </div>
+                        {/* dots */}
+                        <div
+                            className="absolute flex items-center gap-2"
+                            style={{ top: "69%" }}
+                        >
+                            <div style={{
+                                height: 8,
+                                width: isLogin ? 8 : 22,
+                                borderRadius: 10,
+                                background: isLogin ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,1)",
+                                transition: "all 0.9s cubic-bezier(0.65,0,0.35,1)",
+                            }} />
+                            <div style={{
+                                height: 8,
+                                width: isLogin ? 22 : 8,
+                                borderRadius: 10,
+                                background: isLogin ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.4)",
+                                transition: "all 0.9s cubic-bezier(0.65,0,0.35,1)",
+                            }} />
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     );
-}   
+}
