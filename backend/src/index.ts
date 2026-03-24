@@ -2,6 +2,7 @@ import express from "express";
 import { Signup } from "./controllers/authControllers";
 import { Signin } from "./controllers/authControllers";
 import cors from "cors"
+import { middleware } from "./middlewares/middleware";
 
 const app = express();
 app.use(express.json());
@@ -14,3 +15,16 @@ app.listen(3000, () => {
     console.log("Port is listening on 3000");
 });
 
+
+app.get("/dashboard", middleware, (req, res) => {
+    //@ts-ignore
+    const userId = req.userId!;
+    //@ts-ignore
+    const email = req.email!;
+
+    return res.json({
+        message: "Welcome to dashboard",
+        userId,
+        email
+    });
+});
