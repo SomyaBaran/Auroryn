@@ -8,7 +8,7 @@ export default function AuthPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
-    const [loginUsername, setLoginUsername] = useState("");
+    const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [isLogin, setIsLogin] = useState(false);
 
@@ -17,13 +17,13 @@ export default function AuthPage() {
     const handleRegister = async () => {
         if (!email || !password || !username) return;
         const data = await SignUpUser(email, password, username);
-        if (data) navigate("/");
+        if (data.token) navigate("/");
     };
 
     const handleLogin = async () => {
-        if (!loginUsername || !loginPassword) return;
-        const data = await LoginUser(loginUsername, loginPassword);
-        if (data) navigate("/");
+        if (!loginEmail || !loginPassword) return;
+        const data = await LoginUser(loginEmail, loginPassword);
+        if (data.token) navigate("/");
     };
 
     return (
@@ -67,7 +67,7 @@ export default function AuthPage() {
                 >
                     <h1 className="text-[2rem] font-extrabold text-[#302F2A] mb-6 text-center">Login</h1>
                     <div className="relative w-full mb-3">
-                        <input placeholder="Username" value={loginUsername} onChange={e => setLoginUsername(e.target.value)} className="border-none bg-[#F2F1F3] w-full h-[44px] px-[14px] pr-[44px] rounded-[10px] text-[14px] outline-none" />
+                        <input placeholder="Email" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} className="border-none bg-[#F2F1F3] w-full h-[44px] px-[14px] pr-[44px] rounded-[10px] text-[14px] outline-none" />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><UserIcon /></div>
                     </div>
                     <div className="relative w-full mb-2">
