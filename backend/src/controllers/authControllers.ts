@@ -20,15 +20,12 @@ const SignupSchema = z.object({
         .string()
 });
 
-// const SigninSchema = z.object({
-//     email: z.email("Invalid email addess"),
-//     password: z.string().min(1, "Password is required")
-// });
 
 export const Signup = async (req: Request, res: Response) => {
     console.log("req came billu");
 
     console.log(req.body);
+
     
     
     const result = SignupSchema.safeParse(req.body);
