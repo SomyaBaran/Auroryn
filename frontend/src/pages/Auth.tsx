@@ -17,12 +17,14 @@ export default function AuthPage() {
     const handleRegister = async () => {
         if (!email || !password || !username) return;
         const data = await SignUpUser(email, password, username);
+        localStorage.setItem("token", data.token);
         if (data.token) navigate("/");
     };
 
     const handleLogin = async () => {
         if (!loginEmail || !loginPassword) return;
         const data = await LoginUser(loginEmail, loginPassword);
+        localStorage.setItem("token", data.token);
         if (data.token) navigate("/");
     };
 
