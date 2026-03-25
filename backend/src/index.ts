@@ -16,7 +16,7 @@ app.listen(3000, () => {
 });
 
 
-app.get("/dashboard", middleware, (req, res) => {
+app.get("/check", middleware, (req, res) => {
     //@ts-ignore
     const userId = req.userId!;
     //@ts-ignore

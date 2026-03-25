@@ -110,7 +110,7 @@ export const Signin = async (req: Request, res: Response) => {
             email: user.email
         },
         JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "24h" }
     );
 
     res.json({

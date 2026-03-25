@@ -3,6 +3,7 @@ import SignUpUser from "../api/signup";
 import LoginUser from "../api/login";
 import { useNavigate } from "react-router";
 import { LockIcon, MailIcon, SocialRow, UserIcon } from "../assets/svgs";
+import { useLoggedIn } from "../hooks/useLoggedIn";
 
 export default function AuthPage() {
     const [email, setEmail] = useState("");
@@ -11,8 +12,15 @@ export default function AuthPage() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [isLogin, setIsLogin] = useState(false);
-
+    const { loggedIn, loading } = useLoggedIn();
     const navigate = useNavigate();
+
+    if (loading) {
+        return <div>Loading ...</div>
+    }
+    if (loggedIn) {
+        navigate("/");
+    }
 
     const handleRegister = async () => {
         if (!email || !password || !username) return;
