@@ -30,7 +30,8 @@ export function useLoggedIn() {
                     setLoggedIn(true);
                 }
 
-            } catch {
+            } 
+            catch {
                 setLoggedIn(false);
             }
             setLoading(false);
