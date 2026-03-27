@@ -19,3 +19,23 @@
 .overlay-to-right {
     animation: slide-to-right 0.96s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
+
+
+.ProseMirror {
+  outline: none;
+  min-height: 200px;
+}
+
+.ProseMirror p {
+  margin: 0.5em 0;
+}
+
+.ProseMirror h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

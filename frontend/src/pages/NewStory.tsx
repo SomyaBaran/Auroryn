@@ -1,5 +1,9 @@
+import Tiptap from "../components/TipTap";
+
 export default function NewStory() {
     return (
-        <div></div>
+        <div className="card">
+            <Tiptap />
+        </div>
     )
 }
