@@ -4,6 +4,7 @@ import LoginUser from "../api/login";
 import { useNavigate } from "react-router";
 import { LockIcon, MailIcon, SocialRow, UserIcon } from "../assets/svgs";
 import { useLoggedIn } from "../hooks/useLoggedIn";
+import image from "../assets/image.png";
 
 export default function AuthPage() {
     const [email, setEmail] = useState("");
@@ -45,12 +46,19 @@ export default function AuthPage() {
                 className="relative bg-white overflow-hidden shadow-2xl"
                 style={{ width: 760, height: 480, borderRadius: 20 }}
             >
+
+                {/* Logo */}
+                <img
+                    src={image}
+                    alt="image"
+                    className="absolute top-12 left-4 w-18 h-18 ml-3 object-contain bg-transparent"
+                />
                 {/* REGISTER FORM */}
                 <div
                     className="absolute top-0 left-0 flex flex-col items-center justify-center"
                     style={{ width: "45%", height: "100%", padding: "0 36px" }}
                 >
-                    <h1 className="text-[2rem] font-extrabold text-[#302F2A] mb-6 text-center">Registration</h1>
+                    <h1 className="text-[2.1rem] font-extrabold text-[#302F2A] ml-11 mb-6 text-center">Registration</h1>
                     <div className="relative w-full mb-3">
                         <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} className="border-none bg-[#F2F1F3] w-full h-[44px] px-[14px] pr-[44px] rounded-[10px] text-[14px] outline-none" />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><UserIcon /></div>
