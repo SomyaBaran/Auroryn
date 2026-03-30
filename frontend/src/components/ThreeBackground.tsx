@@ -120,36 +120,7 @@ function Boxes() {
     );
 }
 
-function Lasers() {
-    const [laserData] = useState(() => {
-        return Array.from({ length: 8 }, (_, i) => ({
-            x: (Math.random() - 0.5) * 50,
-            z: (Math.random() - 0.5) * 50,
-            axis: i % 2 === 0 ? "x" : "z",
-            rotY: (Math.random() - 0.5) * Math.PI,
-        }));
-    });
 
-    return (
-        <>
-            {laserData.map((d, i) => (
-                <mesh
-                    key={i}
-                    position={[d.x, 1.5, d.z]}
-                    rotation={[0, d.rotY, 0]}
-                >
-                    <boxGeometry args={[0.02, 0.02, 28]} />
-                    <meshStandardMaterial
-                        color="#ff1493"
-                        emissive="#ff1493"
-                        emissiveIntensity={4}
-                        toneMapped={false}
-                    />
-                </mesh>
-            ))}
-        </>
-    );
-}
 
 function CameraRig() {
     const { camera } = useThree();
@@ -191,8 +162,7 @@ export function ThreeBackground() {
     return (
         <div className="fixed inset-0 -z-10">
 
-            {/* Logo overlay — top left, above the canvas */}
-            <div className="absolute top-0 left-0 z-10 flex items-center gap-1 px-6 py-4">
+            <div className="absolute top-0 left-0 z-50 flex items-center gap-1 px-6 py-3">
                 <img
                     src={logo}
                     alt="Auroryn logo"
@@ -229,7 +199,7 @@ export function ThreeBackground() {
 
                 <CameraRig />
                 <Boxes />
-                <Lasers />
+                
                 <Particles />
             </Canvas>
         </div>
