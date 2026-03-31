@@ -1,9 +1,15 @@
-import { useNavigate } from "react-router";
-
+import { ThreeBackground } from "../components/ThreeBackground";
+import { Navbar } from "../components/NavBar";
+import { Writing } from "../components/Writing";
+import { Hero } from "../components/Hero";
 export function Landing() {
-    const navigate = useNavigate();
 
     return (
-        <button onClick={() => navigate("/new-story")}>Create</button>
+        <div className="relative h-screen flex items-center justify-center text-white">
+            <Navbar />
+            <ThreeBackground />
+            <Writing />
+            <Hero />
+        </div>
     );
 }

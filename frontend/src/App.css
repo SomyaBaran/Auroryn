@@ -1,25 +1,89 @@
 @import "tailwindcss";
 
 @keyframes slide-to-left {
-    0%   { left: 45%; width: 55%; border-radius: 140px 0 0 140px; }
-    40%  { left: 0%;  width: 100%; border-radius: 0; }
-    100% { left: 0%;  width: 55%; border-radius: 0 140px 140px 0; }
+  0% {
+    left: 45%;
+    width: 55%;
+    border-radius: 140px 0 0 140px;
+  }
+  40% {
+    left: 0%;
+    width: 100%;
+    border-radius: 0;
+  }
+  100% {
+    left: 0%;
+    width: 55%;
+    border-radius: 0 140px 140px 0;
+  }
 }
 
 @keyframes slide-to-right {
-    0%   { left: 0%;  width: 55%; border-radius: 0 140px 140px 0; }
-    40%  { left: 0%;  width: 100%; border-radius: 0; }
-    100% { left: 45%; width: 55%; border-radius: 140px 0 0 140px; }
+  0% {
+    left: 0%;
+    width: 55%;
+    border-radius: 0 140px 140px 0;
+  }
+  40% {
+    left: 0%;
+    width: 100%;
+    border-radius: 0;
+  }
+  100% {
+    left: 45%;
+    width: 55%;
+    border-radius: 140px 0 0 140px;
+  }
 }
 
 .overlay-to-left {
-    animation: slide-to-left 0.96s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: slide-to-left 0.96s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .overlay-to-right {
-    animation: slide-to-right 0.96s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: slide-to-right 0.96s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
+@keyframes scribble-bounce {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dashoffset: 100;
+  }
+
+  70% {
+    stroke-dashoffset: 0;
+  }
+
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+}
+
+.scribble-line {
+  animation: scribble-bounce 5.5s ease-in-out infinite;
+}
+
+.scribble-line.delay {
+  animation-delay: 0.3s;
+}
 
 .ProseMirror {
   outline: none;
