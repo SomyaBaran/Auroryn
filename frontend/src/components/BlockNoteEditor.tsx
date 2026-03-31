@@ -5,10 +5,9 @@ import "@blocknote/core/fonts/inter.css";
 
 export default function MyEditor() {
     const editor = useCreateBlockNote();
-
     return (
-        <div className="w-full h-full">
-            <BlockNoteView editor={editor} className="h-full" />
+        <div className="w-full">
+            <BlockNoteView editor={editor} /> 
         </div>
     );
 }

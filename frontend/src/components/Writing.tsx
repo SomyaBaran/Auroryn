@@ -1,10 +1,10 @@
 import writeIcon from "../assets/write.png";
-import MyEditor from "./BlockNoteEditor";
-import { Navigate, useNavigate } from "react-router";
+// import MyEditor from "./BlockNoteEditor";
+import { useNavigate } from "react-router";
 
 export function Writing() {
     const navigate = useNavigate();
-    
+
     return (
         <div className="fixed top-5 gap-4 z-50 right-6 flex items-center">
             <img

@@ -21,16 +21,9 @@ const SignupSchema = z.object({
 });
 
 
-export const Signup = async (req: Request, res: Response) => {
-    console.log("req came billu");
-
-    console.log(req.body);
-
-    
-    
+export const Signup = async (req: Request, res: Response) => {    
     const result = SignupSchema.safeParse(req.body);
-    
-    console.log(result)
+    // console.log(result)
 
     if(!result.success) {
         return res.status(400).json({

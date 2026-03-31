@@ -73,7 +73,7 @@ export function Hero() {
                         <span className="text-[rgba(220,80,130,0.40)] text-[13px] mt-2">›</span>
                         <input
                             type="text"
-                            placeholder="write a new post . . ."
+                            placeholder="Press '/' to see options . . ."
                             className="flex-1 bg-transparent border-none outline-none text-white/80 text-[13.5px] font-light tracking-wide leading-relaxed placeholder:text-white/22 pt-1"
                         />
                     </div>
