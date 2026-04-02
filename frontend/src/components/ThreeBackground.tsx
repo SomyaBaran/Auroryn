@@ -197,7 +197,7 @@ export function ThreeBackground() {
 
                 <CameraRig />
                 <Boxes />
-                
+
                 <Particles />
             </Canvas>
         </div>
