@@ -1,4 +1,5 @@
 import { StatusDropdown } from "./StatusDropdown";
+import { SlashDropdown } from "./StatusDropdown";
 
 export function Hero() {
     return (
@@ -48,7 +49,7 @@ export function Hero() {
                     boxShadow: '0 0 40px rgba(220,60,120,0.08), 0 2px 20px rgba(0,0,0,0.6)',
                 }}
             >
-                <div className="w-full bg-[#0e0608] rounded-2xl overflow-hidden font-mono">
+                <div className="w-full bg-[#0e0608] rounded-2xl font-mono">
 
                     <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-[rgba(220,60,120,0.10)]">
                         <div className="flex items-center gap-2.5">
@@ -66,18 +67,7 @@ export function Hero() {
 
                         <StatusDropdown />
                     </div>
-
-
-
-                    <div className="px-4 py-5 min-h-[76px] flex items-center gap-2.5">
-                        <span className="text-[rgba(220,80,130,0.40)] text-[13px] mt-2">›</span>
-                        <input
-                            type="text"
-                            placeholder="Press '/' to see options . . ."
-                            className="flex-1 bg-transparent border-none outline-none text-white/80 text-[13.5px] font-light tracking-wide leading-relaxed placeholder:text-white/22 pt-1"
-                        />
-                    </div>
-
+                    <SlashDropdown />
                     <div className="flex items-center justify-between px-2 py-2 border-t border-[rgba(220,60,120,0.10)]">
                         <div className="flex items-center gap-3">
                             <button
