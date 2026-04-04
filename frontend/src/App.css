@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&display=swap");
 
 @keyframes slide-to-left {
   0% {
@@ -104,20 +105,206 @@
   font-weight: bold;
 }
 
-html, body {
+html,
+body {
   overscroll-behavior: none;
   height: 100%;
+  background-color: #0f0f0f;
 }
 
+/* ── Editor Nav ── */
+.editor-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: #0f0f0f;
+  border-bottom: 1px solid rgba(124, 104, 104, 0.264);
+}
+
+/* Left — logo */
+.editor-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  text-decoration: none;
+  color: #747474;
+}
+
+.editor-nav-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: invert(1);  
+}
+
+.editor-nav-logo-text {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: #dcdcdc;
+}
+
+/* Right — actions */
+.editor-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.more-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.more-btn:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.publish-btn {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #ab1761;
+  border: none;
+  border-radius: 100px;
+  padding: 0.45rem 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.publish-btn:hover {
+  background: #f472b6;
+  transform: translateY(-1px);
+}
+
+.publish-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Editor Body ── */
+.editor-page {
+  padding-top: 64px;
+  min-height: 100vh;
+  background: #0f0f0f;
+}
+
+.editor-wrapper {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+}
+
+.story-title {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.92);
+  caret-color: #ec4899;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.story-title::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}
+
+.editor-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(236, 72, 154, 0.26);
+  margin-bottom: 1.5rem;
+}
+
+/* ── BlockNote overrides ── */
 .bn-container {
   overscroll-behavior: none;
-  height: 100vh;
-  width: 100vw;
+  background: transparent !important;
   border-radius: 0 !important;
 }
 
 .bn-editor {
-  min-height: 100vh;
+  background: transparent !important;
   border-radius: 0 !important;
-  padding: 2rem 4rem;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  caret-color: #ec4899 !important;
+}
+
+.bn-toolbar {
+  background: #1a1a1a !important;
+  border: 1px solid rgba(236, 72, 153, 0.2) !important;
+  border-radius: 8px !important;
+}
+
+.bn-toolbar button:hover,
+.bn-toolbar button[data-active="true"] {
+  background: rgba(236, 72, 153, 0.15) !important;
+  color: #f9a8d4 !important;
+}
+
+.bn-editor ::selection {
+  background: rgba(236, 72, 153, 0.25);
+}
+
+.bn-editor h1 {
+  font-family: "DM Serif Display", serif !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 2rem !important;
+}
+
+.bn-editor h2 {
+  font-family: "DM Serif Display", serif !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1.5rem !important;
+}
+
+.bn-editor h3 {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.bn-editor blockquote {
+  border-left: 3px solid #ec4899 !important;
+  padding-left: 1.2rem !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-style: italic !important;
+}
+
+.bn-editor code {
+  background: rgba(236, 72, 153, 0.08) !important;
+  color: #f9a8d4 !important;
+  border-radius: 4px !important;
+  padding: 1px 5px !important;
+}
+
+.bn-editor a {
+  color: #f9a8d4 !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(249, 168, 212, 0.4);
 }
