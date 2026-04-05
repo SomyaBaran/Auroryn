@@ -1,12 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BlockNoteEditor from "../components/BlockNoteEditor";
 import logo from "../assets/image.png";
 import "../app.css";
+import { useCreateBlockNote } from "@blocknote/react";
+import { CreatePost } from "../api/post";
 
 export default function NewStory() {
     const [title, setTitle] = useState("");
     const titleRef = useRef<HTMLTextAreaElement>(null);
+    const editor = useCreateBlockNote();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const el = titleRef.current;
@@ -15,10 +20,19 @@ export default function NewStory() {
         el.style.height = `${el.scrollHeight}px`;
     }, [title]);
 
-    const handlePublish = () => {
-        console.log("Publish:", { title });
-        // publish logic here 
-    };
+    const handlePublish = async () => {
+        const document = editor.document;
+        if (!title || !document) {
+            alert("Title and content required");
+        }
+
+        const data = await CreatePost(title, document, navigate);
+        if (data.blog.id) {
+            alert("Blog Published");
+            navigate("/home");
+        }
+    }
+
 
     return (
         <div className="editor-page">
@@ -55,7 +69,7 @@ export default function NewStory() {
                     spellCheck
                 />
                 <div className="editor-divider" />
-                <BlockNoteEditor />
+                <BlockNoteEditor editor={editor} />
             </div>
 
         </div>
