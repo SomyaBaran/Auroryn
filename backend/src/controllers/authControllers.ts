@@ -70,7 +70,6 @@ export const Signup = async (req: Request, res: Response) => {
             email: user.email
         }
     });
-
 };
 
 export const Signin = async (req: Request, res: Response) => {
