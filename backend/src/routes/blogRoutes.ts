@@ -19,7 +19,8 @@ blogRouter.post("/new", middleware, async (req: Request, res: Response) => {
         data: {
             title,
             content,
-            authorId
+            authorId,
+            published: true
         }
     });
 

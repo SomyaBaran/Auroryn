@@ -5,10 +5,12 @@ import logo from "../assets/image.png";
 import "../app.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { CreatePost } from "../api/post";
+import { useLoggedIn } from "../hooks/useLoggedIn";
 
 export default function NewStory() {
     const [title, setTitle] = useState("");
     const titleRef = useRef<HTMLTextAreaElement>(null);
+    const { loading, loggedIn } = useLoggedIn();
     const editor = useCreateBlockNote();
 
     const navigate = useNavigate();
@@ -19,6 +21,14 @@ export default function NewStory() {
         el.style.height = "auto";
         el.style.height = `${el.scrollHeight}px`;
     }, [title]);
+
+
+    if (loading) {
+        return <div>Loading ...</div>
+    }
+    if (!loggedIn) {
+        navigate("/auth");
+    }
 
     const handlePublish = async () => {
         const document = editor.document;
