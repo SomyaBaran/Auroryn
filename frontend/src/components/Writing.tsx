@@ -1,5 +1,4 @@
 import writeIcon from "../assets/write.png";
-// import MyEditor from "./BlockNoteEditor";
 import { useNavigate } from "react-router";
 
 export function Writing() {

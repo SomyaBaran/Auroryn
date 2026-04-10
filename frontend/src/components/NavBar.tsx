@@ -10,11 +10,10 @@ export function Navbar() {
     });
 
     const handleHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        const el = e.currentTarget;
         const parent = containerRef.current;
         if (!parent) return;
 
-        const rect = el.getBoundingClientRect();
+        const rect = e.currentTarget.getBoundingClientRect();
         const parentRect = parent.getBoundingClientRect();
 
         setStyle({
@@ -24,63 +23,37 @@ export function Navbar() {
         });
     };
 
+    const navItems = ["Home", "About", "Contact", "Query"];
+
     return (
-        <div className="flex justify-center pt-5 top-0 fixed w-full">
+        <div className="flex justify-center pt-5 fixed top-0 w-full">
             <div
                 ref={containerRef}
-                onMouseLeave={() =>
-                    setStyle((prev) => ({
-                        ...prev,
-                        opacity: 0,
-                    }))
-                }
-                className="relative lg:flex items-center gap-1 text-xs font-thin transition duration-200 bg-[#151617] rounded-[8px] p-[2px] border border-none"
+                onMouseLeave={() => setStyle((s) => ({ ...s, opacity: 0 }))}
+                className="relative flex items-center gap-1 text-xs bg-[#151617] rounded-[8px] p-[2px]"
             >
-
-                {/* Sliding background */}
                 <div
-                    className="absolute top-[3px] h-[calc(100%-7px)] bg-pink-900/60 rounded-[6px] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{
-                        left: style.left,
-                        width: style.width,
-                        opacity: style.opacity,
-                    }}
+                    className="absolute top-[3px] h-[calc(100%-7px)] bg-pink-900/60 rounded-[6px] transition-all duration-500"
+                    style={style}
                 />
 
-                {/* Hamburger */}
-                <div className="flex flex-col gap-[4px] cursor-pointer px-3 py-2 z-10">
-                    <span className="block w-5 h-[1.5px] bg-white/70" />
-                    <span className="block w-5 h-[1.5px] bg-white/70" />
+                {/* // two lines  */}
+                <div className="flex flex-col gap-[4px] px-3 py-2 z-10">
+                    <span className="w-5 h-[1.5px] bg-white/70" />
+                    <span className="w-5 h-[1.5px] bg-white/70" />
                 </div>
 
                 {/* Nav items */}
-                <a  href="#Home"
-                    onMouseEnter={handleHover}
-                    className="px-3 py-2 rounded-[6px] cursor-pointer text-white/80 relative z-10"
-                >
-                    <span>Home</span>
-                </a>
-
-                <a  href="#About"
-                    onMouseEnter={handleHover}
-                    className="px-3 py-2 rounded-[6px] cursor-pointer text-white/80 relative z-10"
-                >
-                    <span>About</span>
-                </a>
-
-                <a  href="#Contact"
-                    onMouseEnter={handleHover}
-                    className="px-3 py-2 rounded-[6px] cursor-pointer text-white/80 relative z-10"
-                >
-                    <span>Contact</span>
-                </a>
-
-                <a  href="#Query"
-                    onMouseEnter={handleHover}
-                    className="px-3 py-2 rounded-[6px] cursor-pointer text-white/80 relative z-10"
-                >
-                    <span>Query</span>
-                </a>
+                {navItems.map((item) => (
+                    <a
+                        key={item}
+                        href={`#${item}`}
+                        onMouseEnter={handleHover}
+                        className="px-3 py-2 text-white/80 z-10"
+                    >
+                        {item}
+                    </a>
+                ))}
             </div>
         </div>
     );
