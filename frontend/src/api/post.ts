@@ -56,16 +56,3 @@ export async function getUserPost(navigate: (path: string) => void) {
     }
     return data;
 }
-
-export async function getBlogById(id: string) {
-    const res = await fetch(`${BACKEND_URL}/blog/${id}`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-    });
-
-    if (!res.ok) {
-        return;
-    }
-    return res.json();
-
-}
