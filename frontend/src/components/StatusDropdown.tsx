@@ -8,10 +8,10 @@ const statuses = [
 ];
 
 const OPTIONS = [
-    { label: "Home" },
-    { label: "Dashboard" },
-    { label: "Drafts" },
-    { label: "Posts" },
+    { e: "Home" },
+    { e: "Dashboard" },
+    { e: "Drafts" },
+    { e: "Posts" },
 ];
 
 export function StatusDropdown() {
@@ -62,18 +62,19 @@ export function SlashDropdown() {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    function handleClick() {
+        setOpen(!open);
+    }
+
     return (
         <div className="relative">
             <div className="px-4 py-5 min-h-[76px] flex items-center gap-2.5">
-                <span className="text-[rgba(220,80,130,0.40)] text-[13px] mt-2">›</span>
                 <input
                     type="text"
                     value={value}
                     onChange={(e) => { setValue(e.target.value); setOpen(e.target.value === "/"); }}
-                    onBlur={() => setTimeout(() => setOpen(false), 100)}
-                    onKeyDown={(e) => { if (e.key === "Escape") { setOpen(false); setValue(""); } }}
                     placeholder="Press '/' to see options . . ."
-                    className="flex-1 bg-transparent border-none outline-none text-white/80 text-[13.5px] font-light tracking-wide leading-relaxed placeholder:text-white/22 pt-1"
+                    className="flex-1 outline-none text-white/80 text-[13.5px] font-light placeholder:text-white/22"
                 />
             </div>
 
@@ -81,15 +82,17 @@ export function SlashDropdown() {
                 <div className="absolute top-full left-4 z-50 w-fit min-w-[130px] rounded-lg border border-[rgba(255,255,255,0.06)] bg-[#080808] overflow-hidden"
                     style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.7)" }}>
                     <div className="py-1">
-                        {OPTIONS.map(({ label }) => (
-                            <button
-                                key={label}
-                                onMouseDown={() => { setValue(label); setOpen(false); navigate(`/${label.toLowerCase()}`); }}
-                                className="w-[90%] flex items-center px-5 py-1.5 ml-1.5 text-[11.5px] text-white/40 hover:bg-white/10 hover:text-white/70 transition-colors text-left whitespace-nowrap rounded-sm"
-                            >
-                                {label}
-                            </button>
-                        ))}
+                        {
+                            OPTIONS.map(({ e }) => (
+                                <button
+                                    key={e}
+                                    onMouseDown={() => { setValue(e); handleClick(); navigate(`/${e.toLowerCase()}`); }}
+                                    className="w-[90%] flex px-5 py-1.5 ml-1.5 text-[11.5px] text-white/40 hover:bg-white/10 hover:text-white/60 rounded-sm"
+                                >
+                                    {e}
+                                </button>
+                            )
+                            )}
                     </div>
                 </div>
             )}
