@@ -7,14 +7,12 @@ import pink from "../assets/pink.jpg";
 
 const TABS = ["Posts", "Drafts"] as const;
 type Tab = typeof TABS[number];
-
 export function Dashboard() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [activeNav] = useState("home");
     const [activeTab, setActiveTab] = useState<Tab>("Posts");
-    const [editOpen, setEditOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -92,7 +90,7 @@ export function Dashboard() {
                         letterSpacing: "2px",
                     }}
                 >
-                    - Auroryn - 
+                    - Auroryn -
                 </div>
 
                 <div style={{ padding: "10px 16px" }}></div>
@@ -128,12 +126,6 @@ export function Dashboard() {
                         <p style={{ color: "#71767b", fontSize: "15px" }}>
                             {activeTab === "Posts" ? "No stories yet." : "No drafts."}
                         </p>
-                        {activeTab === "Posts" && (
-                            <button onClick={() => navigate("/write")}
-                                style={{ marginTop: "16px", background: "#1d9bf0", color: "#fff", border: "none", borderRadius: "99px", padding: "12px 28px", fontSize: "15px", fontWeight: 700, cursor: "pointer" }}>
-                                Write a story
-                            </button>
-                        )}
                     </div>
                 ) : (
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", padding: "16px" }}>
@@ -141,23 +133,6 @@ export function Dashboard() {
                     </div>
                 )}
             </main>
-
-
-
-            {editOpen && (
-                <>
-                    {/* Blurred backdrop */}
-                    <div
-                        onClick={() => setEditOpen(false)}
-                        style={{
-                            position: "fixed", inset: 0, zIndex: 100,
-                            background: "rgba(67, 69, 70, 0.5)",
-                            backdropFilter: "blur(4px)",
-                            WebkitBackdropFilter: "blur(4px)",
-                        }}
-                    />
-                </>
-            )}
         </div>
     );
 }

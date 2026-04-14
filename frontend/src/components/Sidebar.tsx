@@ -44,9 +44,6 @@ const NAV = [
 ];
 interface SidebarProps {
     activeNav: string;
-    isOpen: boolean;
-    onNavClick: (label: string) => void;
-    onClose: () => void;
 }
 
 export function Sidebar({ activeNav }: SidebarProps) {
