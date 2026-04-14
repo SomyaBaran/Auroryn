@@ -1,3 +1,10 @@
+type ContentNode = {
+    text?: string;
+    content?: ContentNode[];
+    children?: ContentNode[];
+};
+
+
 export function formatDate(dateStr: string): string {
     if (!dateStr) return "";
     const d = new Date(dateStr);
@@ -11,22 +18,30 @@ export function formatDate(dateStr: string): string {
     return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-export function getExcerpt(content: any): string {
-    if (!content) return "";
+
+export function getExcerpt(content: unknown): string {
+    if (!content) {
+        return "";
+    }
+
     try {
-        const blocks = Array.isArray(content)
-            ? content
-            : JSON.parse(typeof content === "string" ? content : JSON.stringify(content));
+        const parsed = typeof content === "string" ? JSON.parse(content) : content;
+        const blocks: ContentNode[] = Array.isArray(parsed) ? parsed : [];
         const texts: string[] = [];
-        const extract = (node: any) => {
-            if (!node) return;
-            if (typeof node.text === "string" && node.text.trim()) texts.push(node.text.trim());
-            if (Array.isArray(node.content)) node.content.forEach(extract);
-            if (Array.isArray(node.children)) node.children.forEach(extract);
-        };
+
+        const extract = (node: ContentNode) => {
+            if (node.text?.trim()) {
+                texts.push(node.text.trim());
+            }
+
+            node.content?.forEach(extract);
+            node.children?.forEach(extract);
+        }
+
         blocks.forEach(extract);
         return texts.join(" ").slice(0, 280);
-    } catch {
+    }
+    catch {
         return "";
     }
 }

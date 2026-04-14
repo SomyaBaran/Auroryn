@@ -10,14 +10,13 @@ export interface Blog {
     createdAt: string;
 }
 
-/* ── PostCard ── */
 export function PostCard({ blog }: { blog: Blog }) {
     const navigate = useNavigate();
     const excerpt = getExcerpt(blog.content);
 
     return (
         <article
-            onClick={() => navigate(`/${blog.id}`)}
+            onClick={() => navigate(`/blog/${blog.id}`)}
             style={{
                 padding: "16px",
                 border: "1px solid #2f3336",
