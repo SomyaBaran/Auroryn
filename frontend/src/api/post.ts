@@ -56,3 +56,21 @@ export async function getUserPost(navigate: (path: string) => void) {
     }
     return data;
 }
+
+export async function getPostById(id: string) {
+    const res = await fetch(`${BACKEND_URL}/blog/${id}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    })
+
+    if (!res.ok) {
+        alert("Can't find post");
+    }
+
+    const data = await res.json();
+    if (!data) {
+        alert("something went wrong with data");
+    }
+
+    return data.blog;
+}

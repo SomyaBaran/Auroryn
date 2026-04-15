@@ -45,3 +45,18 @@ blogRouter.get("/user-blogs", middleware, async (req: Request, res: Response) =>
         blogs
     });
 });
+
+blogRouter.get("/:id", async (req: Request, res: Response) => {
+    const { id } = req.params
+    const blog = await prisma.blog.findUnique({
+        where: { id: id as string }
+    });
+    if (!blog) {
+        return res.status(400).json({
+            err: "blog not found"
+        })
+    }
+    return res.status(200).json({
+        blog
+    });
+});

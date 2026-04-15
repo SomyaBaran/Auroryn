@@ -28,7 +28,7 @@ export function Dashboard() {
             }
         };
         load();
-    }, []);
+    }, [navigate]);
 
     const allPosts = blogs;
     const drafts = blogs.filter(b => !b.published);
