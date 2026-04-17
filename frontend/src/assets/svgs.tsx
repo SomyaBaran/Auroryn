@@ -19,7 +19,7 @@ export const LockIcon = () => (
 export const SocialRow = () => (
     <div className="flex gap-[12px] justify-center">
         {[<FaGoogle />, <FaFacebookF />, <FaGithub />, <FaLinkedinIn />].map((icon, i) => (
-            <div key={i} className="w-[40px] h-[40px] border border-[#ccc] flex items-center justify-center text-gray-700 text-[17px] rounded-[6px] hover:border-[#82A0F4] hover:text-[#82A0F4] cursor-pointer transition-all duration-200">
+            <div key={i} className="w-[40px] h-[40px] border border-[#a4477c] flex items-center justify-center text-gray-700 text-[17px] rounded-[6px] hover:border-[#f482d2] hover:text-[#f482ac] cursor-pointer transition-all duration-200">
                 {icon}
             </div>
         ))}

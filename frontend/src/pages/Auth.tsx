@@ -40,10 +40,10 @@ export default function AuthPage() {
     return (
         <div
             className="h-screen w-screen flex items-center justify-center"
-            style={{ background: "linear-gradient(to left, #D1DCFC, #DAE2EF)" }}
+            style={{ background: "linear-gradient(to left, #44061f, #000000)" }}
         >
             <div
-                className="relative bg-white overflow-hidden shadow-2xl"
+                className="relative bg-[#ffc3de] overflow-hidden shadow-2xl"
                 style={{ width: 760, height: 480, borderRadius: 20 }}
             >
 
@@ -71,7 +71,7 @@ export default function AuthPage() {
                         <input placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} className="border-none bg-[#F2F1F3] w-full h-[44px] px-[14px] pr-[44px] rounded-[10px] text-[14px] outline-none" />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><LockIcon /></div>
                     </div>
-                    <button onClick={handleRegister} className="w-full h-[44px] bg-[#82A0F4] hover:bg-[#6b8de8] text-white font-bold rounded-[8px] duration-200 text-[15px] mb-3">
+                    <button onClick={handleRegister} className="w-full h-[44px] bg-[#c2216c] hover:bg-[#e86b95] text-white font-bold rounded-[8px] duration-200 text-[15px] mb-3">
                         Register
                     </button>
                     <p className="text-[#4d4d4d] text-[12px] mb-2 text-center">or register with social platforms</p>
@@ -92,8 +92,8 @@ export default function AuthPage() {
                         <input placeholder="Password" type="password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} className="border-none bg-[#F2F1F3] w-full h-[44px] px-[14px] pr-[44px] rounded-[10px] text-[14px] outline-none" />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><LockIcon /></div>
                     </div>
-                    <a href="#" className="self-end text-[12px] text-[#82A0F4] hover:text-[#6b8de8] mb-4 transition-colors">Forgot Password?</a>
-                    <button onClick={handleLogin} className="w-full h-[44px] bg-[#82A0F4] hover:bg-[#6b8de8] text-white font-bold rounded-[8px] duration-200 text-[15px] mb-3">
+                    <a href="#" className="self-end text-[12px] text-[#f482cc] hover:text-[#d45d8b] mb-4 transition-colors">Forgot Password?</a>
+                    <button onClick={handleLogin} className="w-full h-[44px] bg-[#b02563] hover:bg-[#e86ba5] text-white font-bold rounded-[8px] duration-200 text-[15px] mb-3">
                         Login
                     </button>
                     <p className="text-[#4d4d4d] text-[12px] mb-2 text-center">or login with social platforms</p>
@@ -103,7 +103,7 @@ export default function AuthPage() {
                 {/* SLIDING OVERLAY */}
                 <div
                     className={`absolute top-0 h-full z-10 ${isLogin ? "overlay-to-left" : "overlay-to-right"}`}
-                    style={{ left: "45%", width: "55%", borderRadius: "140px 0 0 140px", background: "#82A0F4" }}
+                    style={{ left: "45%", width: "55%", borderRadius: "140px 0 0 140px", background: "#d52081" }}
                 >
                     {/* bubble top-right */}
                     <div
@@ -113,7 +113,7 @@ export default function AuthPage() {
                     {/* bubble bottom-left */}
                     <div
                         className="absolute rounded-full"
-                        style={{ width: 180, height: 180, bottom: -50, left: 10, background: "rgba(255,255,255,0.08)" }}
+                        style={{ width: 180, height: 180, bottom: -50, left: 110, background: "rgba(255,255,255,0.08)" }}
                     />
 
                     <div className="relative h-full w-full overflow-hidden flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function AuthPage() {
                         >
                             <h2 className="text-[2rem] font-extrabold text-white mb-2">Welcome Back!</h2>
                             <p className="text-white/80 text-[14px] mb-7">Already have an account?</p>
-                            <button onClick={() => setIsLogin(true)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#6e92f4] transition-all duration-300">
+                            <button onClick={() => setIsLogin(true)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#f46ec7] transition-all duration-300">
                                 Login
                             </button>
                         </div>
@@ -147,7 +147,7 @@ export default function AuthPage() {
                         >
                             <h2 className="text-[2rem] font-extrabold text-white mb-2">Welcome Back!</h2>
                             <p className="text-white/80 text-[14px] mb-7">Don't have an account?</p>
-                            <button onClick={() => setIsLogin(false)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#6e92f4] transition-all duration-300">
+                            <button onClick={() => setIsLogin(false)} className="px-8 py-2 border-2 border-white text-white font-semibold text-sm rounded-md bg-transparent hover:bg-[#f46ec7] transition-all duration-300">
                                 Register
                             </button>
                         </div>
