@@ -23,7 +23,6 @@ const SignupSchema = z.object({
 
 export const Signup = async (req: Request, res: Response) => {    
     const result = SignupSchema.safeParse(req.body);
-    // console.log(result)
 
     if(!result.success) {
         return res.status(400).json({
