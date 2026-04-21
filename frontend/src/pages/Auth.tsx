@@ -46,14 +46,12 @@ export default function AuthPage() {
                 className="relative bg-[#ffc3de] overflow-hidden shadow-2xl"
                 style={{ width: 760, height: 480, borderRadius: 20 }}
             >
-
-                {/* Logo */}
                 <img
                     src={image}
                     alt="image"
                     className="absolute top-12 left-4 w-18 h-18 ml-3 object-contain bg-transparent"
                 />
-                {/* REGISTER FORM */}
+                {/* registration form */}
                 <div
                     className="absolute top-0 left-0 flex flex-col items-center justify-center"
                     style={{ width: "45%", height: "100%", padding: "0 36px" }}
@@ -78,7 +76,7 @@ export default function AuthPage() {
                     <SocialRow />
                 </div>
 
-                {/* LOGIN FORM */}
+                {/* login form */}
                 <div
                     className="absolute top-0 right-0 flex flex-col items-center justify-center"
                     style={{ width: "45%", height: "100%", padding: "0 36px" }}
@@ -99,18 +97,15 @@ export default function AuthPage() {
                     <p className="text-[#4d4d4d] text-[12px] mb-2 text-center">or login with social platforms</p>
                     <SocialRow />
                 </div>
-
-                {/* SLIDING OVERLAY */}
+                {/* sliding div */}
                 <div
                     className={`absolute top-0 h-full z-10 ${isLogin ? "overlay-to-left" : "overlay-to-right"}`}
                     style={{ left: "45%", width: "55%", borderRadius: "140px 0 0 140px", background: "#d52081" }}
                 >
-                    {/* bubble top-right */}
                     <div
                         className="absolute rounded-full"
                         style={{ width: 280, height: 280, top: -80, right: -80, background: "rgba(255,255,255,0.08)" }}
                     />
-                    {/* bubble bottom-left */}
                     <div
                         className="absolute rounded-full"
                         style={{ width: 180, height: 180, bottom: -50, left: 110, background: "rgba(255,255,255,0.08)" }}
@@ -118,7 +113,6 @@ export default function AuthPage() {
 
                     <div className="relative h-full w-full overflow-hidden flex items-center justify-center">
 
-                        {/* register side */}
                         <div
                             className="absolute inset-0 flex flex-col items-center justify-center text-center px-10"
                             style={{
@@ -134,8 +128,6 @@ export default function AuthPage() {
                                 Login
                             </button>
                         </div>
-
-                        {/* login side */}
                         <div
                             className="absolute inset-0 flex flex-col items-center justify-center text-center px-10"
                             style={{
@@ -151,7 +143,6 @@ export default function AuthPage() {
                                 Register
                             </button>
                         </div>
-                        {/* dots */}
                         <div
                             className="absolute flex items-center gap-2"
                             style={{ top: "69%" }}
@@ -171,7 +162,6 @@ export default function AuthPage() {
                                 transition: "all 0.9s cubic-bezier(0.65,0,0.35,1)",
                             }} />
                         </div>
-
                     </div>
                 </div>
             </div>
