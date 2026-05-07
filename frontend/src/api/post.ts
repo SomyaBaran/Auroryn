@@ -92,3 +92,13 @@ export async function updatePost(id: string, content: Block[]) {
     return res.json();
 }
 
+export async function deletePost(id: string) {
+    const res = await fetch(`${BACKEND_URL}/blog/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    });
+    return res.json();
+}

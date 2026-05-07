@@ -1,6 +1,7 @@
 import type { Block } from "@blocknote/core";
 import { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
+import { deletePost } from "../api/post";
 import { getPostById, updatePost } from "../api/post";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
@@ -17,6 +18,7 @@ export function BlogPage() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchBlog = async () => {
             if (!id) {
@@ -49,14 +51,14 @@ export function BlogPage() {
         setIsEditing(true);
     };
 
-    // const handleDelete = async () => {
-    //     setDropdownOpen(false);
-    //     if (!id) {
-    //         return;
-    //     }
-    //     await deletePost(id);
-    //     navigate("/dashboard");
-    // };
+    const handleDelete = async () => {
+        setDropdownOpen(false);
+        if (!id) {
+            return;
+        }
+        await deletePost(id);
+        navigate("/dashboard");
+    };
 
     return (
         <div className="min-h-screen bg-[#0f0f0f] text-white flex justify-center px-4 py-10">
@@ -89,7 +91,7 @@ export function BlogPage() {
                                     Edit
                                 </button>
                                 <button
-                                    // onClick={handleDelete}
+                                    onClick={handleDelete}
                                     className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors flex items-center gap-2"
                                 >
                                     Delete
@@ -137,5 +139,4 @@ export function BlogPage() {
 
             </div>
         </div>
-    )
-}
+    )}

@@ -70,3 +70,13 @@ blogRouter.put("/:id", async (req: Request, res: Response) => {
     });
     return res.json({ blog });
 })
+
+blogRouter.delete("/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const blog = await prisma.blog.delete({
+        where: { id: id as string }
+    });
+    return res.json({
+        success: true
+    });
+})
