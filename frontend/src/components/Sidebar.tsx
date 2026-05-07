@@ -4,42 +4,28 @@ import { UserAvatar } from "./UserAvatar";
 
 const NAV = [
     {
-        label: "Home",
-        path: "/home",
-        icon: (
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-            </svg>
-        ),
+        label: "Home", path: "/home",
+        icon: <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
     },
     {
-        label: "Search",
-        path: "/search",
-        icon: (
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35" />
-            </svg>
-        ),
+        label: "Search", path: "/search",
+        icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
     },
     {
-        label: "Saved",
-        path: "/saved",
-        icon: (
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M5 3h14v18l-7-4-7 4V3z" />
-            </svg>
-        ),
+        label: "Profile", path: "/profile",
+        icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /></svg>
     },
     {
-        label: "Profile",
-        path: "/profile",
-        icon: (
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-        ),
+        label: "Post", path: "/new-story",
+        icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 5h7M12 12h7M12 19h7M5 5h2M5 12h2M5 19h2" /></svg>
+    },
+    {
+        label: "Bookmarks", path: "/bookmarks",
+        icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 3h14v18l-7-4-7 4V3z" /></svg>
+    },
+    {
+        label: "Following", path: "/following",
+        icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><path d="M19 8v6M22 11h-6" /></svg>
     },
 ];
 interface SidebarProps {
