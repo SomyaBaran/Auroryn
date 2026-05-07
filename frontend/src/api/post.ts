@@ -60,7 +60,11 @@ export async function getUserPost(navigate: (path: string) => void) {
 export async function getPostById(id: string) {
     const res = await fetch(`${BACKEND_URL}/blog/${id}`, {
         method: "GET",
-        headers: { "Content-Type": "application/json" }
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+
     })
 
     if (!res.ok) {
