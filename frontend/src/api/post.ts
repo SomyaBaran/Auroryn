@@ -78,3 +78,17 @@ export async function getPostById(id: string) {
 
     return data.blog;
 }
+
+export async function updatePost(id: string, content: Block[]) {
+    const res = await fetch(`${BACKEND_URL}/blog/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({ content })
+    });
+
+    return res.json();
+}
+

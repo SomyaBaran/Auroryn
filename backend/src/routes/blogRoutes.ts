@@ -60,3 +60,13 @@ blogRouter.get("/:id", async (req: Request, res: Response) => {
         blog
     });
 });
+
+blogRouter.put("/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { content } = req.body;
+    const blog = await prisma.blog.update({
+        where: { id: id as string },
+        data: { content }
+    });
+    return res.json({ blog });
+})

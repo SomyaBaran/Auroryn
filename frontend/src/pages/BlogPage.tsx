@@ -1,7 +1,7 @@
 import type { Block } from "@blocknote/core";
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router"
-import { getPostById } from "../api/post";
+import { getPostById, updatePost } from "../api/post";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 
@@ -124,7 +124,10 @@ export function BlogPage() {
                                 .shine { animation: shine 2s infinite; }
                         `}</style>
                         <button
-                            onClick={() => setIsEditing(false)}
+                            onClick={async () => {
+                                await updatePost(id!, editor.document);
+                                setIsEditing(false);
+                            }}
                             className="relative px-9 py-3 mt-9 bg-[#bd1262] text-white text-sm font-semibold rounded-lg shadow-md overflow-hidden">
                             <span className="relative z-10">Save</span>
                             <span className="absolute inset-0 shine bg-gradient-to-r from-transparent via-white/30 to-transparent" />
