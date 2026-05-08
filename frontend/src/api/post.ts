@@ -102,3 +102,9 @@ export async function deletePost(id: string) {
     });
     return res.json();
 }
+
+export async function getAllPosts() {
+    const res = await fetch(`${BACKEND_URL}/blog/all`);
+    const data = await res.json();
+    return data.blogs;
+}

@@ -46,6 +46,14 @@ blogRouter.get("/user-blogs", middleware, async (req: Request, res: Response) =>
     });
 });
 
+blogRouter.get("/all", async (req: Request, res: Response) => {
+    const blogs = await prisma.blog.findMany({
+        where: { published: true },
+        orderBy: { createdAt: "desc" }
+    });
+    res.json({ blogs })
+})
+
 blogRouter.get("/:id", async (req: Request, res: Response) => {
     const { id } = req.params
     const blog = await prisma.blog.findUnique({
