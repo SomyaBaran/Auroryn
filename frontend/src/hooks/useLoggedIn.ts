@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../lib/env";
 
+
+type User = {
+    id: string,
+    username: string,
+    email: string,
+    firstName: string | null,
+    lastName: string | null,
+}
 export function useLoggedIn() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -28,9 +37,10 @@ export function useLoggedIn() {
                     setLoggedIn(false);
                 } else {
                     setLoggedIn(true);
+                    setUser(data.user);
                 }
 
-            } 
+            }
             catch {
                 setLoggedIn(false);
             }
@@ -38,5 +48,5 @@ export function useLoggedIn() {
         }
         checkAuth();
     }, []);
-    return { loggedIn, loading }
+    return { loggedIn, loading, user }
 }
