@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import BlockNoteEditor from "../components/BlockNoteEditor";
 import logo from "../assets/image.png";
 import "../app.css";
@@ -22,12 +22,11 @@ export default function NewStory() {
         el.style.height = `${el.scrollHeight}px`;
     }, [title]);
 
-
     if (loading) {
-        return <div>Loading ...</div>
+        return null;
     }
     if (!loggedIn) {
-        navigate("/auth");
+        return <Navigate to="/auth" />
     }
 
     const handlePublish = async () => {

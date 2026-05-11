@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { getUserPost } from "../api/post";
 import { Sidebar } from "../components/Sidebar";
 import { PostCard, type Blog } from "../components/PostCard";
 import pink from "../assets/pink.jpg";
+import { useLoggedIn } from "../hooks/useLoggedIn";
 
 const TABS = ["Posts", "Drafts"] as const;
 type Tab = typeof TABS[number];
@@ -30,9 +31,17 @@ export function Dashboard() {
         load();
     }, [navigate]);
 
+    const { loggedIn, loading: Load } = useLoggedIn();
+    if (Load) {
+        return null;
+    }
+    if (!loggedIn) {
+        return <Navigate to="/auth" />
+    }
+    
     const allPosts = blogs;
     const drafts = blogs.filter(b => !b.published);
-    const displayed = activeTab === "Posts" ? allPosts : activeTab === "Drafts" ? drafts : [];
+    const displayed = activeTab === "Drafts" ? drafts : allPosts;
 
     return (
         <div style={{ minHeight: "100vh", background: "#000", color: "#e7e9ea", display: "flex", justifyContent: "center" }}>
@@ -60,8 +69,7 @@ export function Dashboard() {
                     style={{ position: "fixed", inset: 0, background: "rgba(91,112,131,0.4)", zIndex: 40 }} />
             )}
 
-            {/* Sidebar */}
-            <Sidebar activeNav={activeNav} />
+            <Sidebar activeNav={activeNav} showLogout={true} />
 
             {/* ── MAIN COLUMN ── */}
             <main style={{ flex: 1, maxWidth: "1100px", borderLeft: "1px solid #2f3336", borderRight: "1px solid #2f3336", minHeight: "100vh", margin: "0 auto" }}>

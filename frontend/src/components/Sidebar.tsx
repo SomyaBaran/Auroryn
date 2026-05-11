@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import logo from "../assets/image.png";
 import { useLoggedIn } from "../hooks/useLoggedIn";
 import { UserAvatar } from "./UserAvatar";
+import { LogoutDropdown } from "./StatusDropdown";
 
 const NAV = [
     {
@@ -31,9 +32,10 @@ const NAV = [
 ];
 interface SidebarProps {
     activeNav: string;
+    showLogout?: boolean;
 }
 
-export function Sidebar({ activeNav }: SidebarProps) {
+export function Sidebar({ activeNav, showLogout = false }: SidebarProps) {
     const { user } = useLoggedIn();
     const navigate = useNavigate();
 
@@ -47,7 +49,8 @@ export function Sidebar({ activeNav }: SidebarProps) {
                 padding: "0 12px", background: "#000",
                 borderRight: "1px solid #2f3336",
                 transition: "transform 0.25s cubic-bezier(0.4,0,0.2,1)",
-                overflowY: "auto",
+                overflowY: "scroll",
+                overflowX: "clip",
             }}
         >
             {/* Logo */}
@@ -106,9 +109,7 @@ export function Sidebar({ activeNav }: SidebarProps) {
                         {user?.username}
                     </div>
                 </div>
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style={{ color: "#e7e9ea", flexShrink: 0 }}>
-                    <circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" />
-                </svg>
+                {showLogout && <LogoutDropdown />}
             </div>
 
         </aside>

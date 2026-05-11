@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { logout } from "../api/logout";
 
 const statuses = [
     { key: "online", label: "online", icon: <span className="w-2 h-2 rounded-full bg-[#28c840] inline-block" /> },
@@ -98,4 +99,54 @@ export function SlashDropdown() {
             )}
         </div>
     );
+}
+
+export function LogoutDropdown() {
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const handleClick = () => {
+        setOpen(!open);
+    }
+
+    const handleLogout = () => {
+        setOpen(false);
+        logout();
+        navigate("/auth")
+    }
+    return (
+        <div className="relative">
+            <button
+                type="button"
+                onClick={handleClick}
+                aria-label="More options"
+                className="flex items-center text-[#fff] hover:text-white/60"
+            >
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style={{ color: "#e7e9ea", flexShrink: 0 }}>
+                    <circle cx="5" cy="12" r="2" />
+                    <circle cx="12" cy="12" r="2" />
+                    <circle cx="19" cy="12" r="2" />
+                </svg>
+            </button>
+
+            {open && (
+                <>
+                    <div className="fixed inset-0 z-40" onClick={handleClick} />
+                    <div
+                        className="absolute bottom-full right-0 mb-2 w-[140px] rounded-xl z-50 overflow-hidden bg-[#080808] border border-[rgba(255,255,255,0.06)]"
+                        style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.7)" }}
+                    >
+                        <div className="py-1">
+                            <button
+                                type="button"
+                                onClick={handleLogout}
+                                className="w-full px-4 py-2.5 text-[12.5px] font-medium text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                            >
+                                Log out
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+    )
 }
