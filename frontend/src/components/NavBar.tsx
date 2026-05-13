@@ -47,7 +47,7 @@ export function Navbar() {
                 {navItems.map((item) => (
                     <a
                         key={item}
-                        href={`#${item}`}
+                        href={`${item}`}
                         onMouseEnter={handleHover}
                         className="px-3 py-2 text-white/80 z-10"
                     >
