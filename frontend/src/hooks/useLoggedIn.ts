@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BACKEND_URL } from "../lib/env";
-
 
 type User = {
     id: string,
@@ -14,39 +13,44 @@ export function useLoggedIn() {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<User | null>(null);
 
-    useEffect(() => {
-        const checkAuth = async () => {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                setLoggedIn(false);
-                setLoading(false);
-                return;
-            }
-
-            try {
-                const response = await fetch(`${BACKEND_URL}/check`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": token!,
-                        "Content-Type": "application/json"
-                    }
-                });
-
-                const data = await response.json();
-                if (data.error) {
-                    setLoggedIn(false);
-                } else {
-                    setLoggedIn(true);
-                    setUser(data.user);
-                }
-
-            }
-            catch {
-                setLoggedIn(false);
-            }
+    const checkAuth = useCallback(async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setLoggedIn(false);
+            setUser(null);
             setLoading(false);
+            return;
         }
-        checkAuth();
+
+        try {
+            const response = await fetch(`${BACKEND_URL}/check`, {
+                method: "GET",
+                headers: {
+                    "Authorization": token,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                setLoggedIn(false);
+                setUser(null);
+            } else {
+                setLoggedIn(true);
+                setUser(data.user);
+            }
+        }
+        catch {
+            setLoggedIn(false);
+            setUser(null);
+        }
+        setLoading(false);
     }, []);
-    return { loggedIn, loading, user }
+
+    useEffect(() => {
+        checkAuth();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [checkAuth]);
+
+    return { loggedIn, loading, user, refetch: checkAuth };
 }
