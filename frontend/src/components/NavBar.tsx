@@ -37,13 +37,11 @@ export function Navbar() {
                     style={style}
                 />
 
-                {/* // two lines  */}
                 <div className="flex flex-col gap-[4px] px-3 py-2 z-10">
                     <span className="w-5 h-[1.5px] bg-white/70" />
                     <span className="w-5 h-[1.5px] bg-white/70" />
                 </div>
 
-                {/* Nav items */}
                 {navItems.map((item) => (
                     <a
                         key={item}
