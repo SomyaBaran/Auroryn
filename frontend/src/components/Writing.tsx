@@ -25,7 +25,13 @@ export function Writing() {
                     src={writeIcon}
                     alt="write"
                     className="w-5 h-5 opacity-80 hover:opacity-100 cursor-pointer transition duration-300"
-                    onClick={() => navigate("/new-story")}
+                    onClick={() => {
+                        if (loggedIn) {
+                            navigate("/new-story");
+                        } else {
+                            setIsAuthOpen(true);
+                        }
+                    }}
                 />
 
                 {!loggedIn && (
