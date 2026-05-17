@@ -15,24 +15,36 @@ export default function AuthCard({ onSuccess }: { onSuccess?: () => void }) {
     const navigate = useNavigate();
 
     const handleRegister = async () => {
-        if (!email || !password || !username) return;
-        const data = await SignUpUser(email, password, username);
-        localStorage.setItem("token", data.token);
-        if (data.token) {
-            if (onSuccess) onSuccess();
-            else navigate("/");
+        if (!email || !password || !username) {
+            const data = await SignUpUser(email, password, username);
+            localStorage.setItem("token", data.token);
+
+            if (data.token) {
+                if (onSuccess) {
+                    onSuccess();
+                }
+                else {
+                    navigate("/");
+                }
+            }
         }
-    };
+    }
 
     const handleLogin = async () => {
-        if (!loginEmail || !loginPassword) return;
+        if (!loginEmail || !loginPassword) {
+            return;
+        }
         const data = await LoginUser(loginEmail, loginPassword);
         localStorage.setItem("token", data.token);
         if (data.token) {
-            if (onSuccess) onSuccess();
-            else navigate("/");
+            if (onSuccess) {
+                onSuccess();
+            }
+            else {
+                navigate("/");
+            }
         }
-    };
+    }
 
     return (
         <div
