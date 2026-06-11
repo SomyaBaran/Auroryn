@@ -72,6 +72,7 @@ export function BlogPage() {
 
                     <div ref={dropdownRef} className="absolute top-0 right-0" onMouseDown={(e) => e.stopPropagation()}>
                         <button
+                            aria-label="options"
                             onClick={() => setDropdownOpen(true)}
                             className="p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
                         >
