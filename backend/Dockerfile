@@ -7,6 +7,8 @@ RUN bun install
 
 COPY . .
 
+RUN bunx prisma generate --schema=prisma/schema.prisma
+
 EXPOSE 3000
 
 CMD ["bun", "run", "start"]
