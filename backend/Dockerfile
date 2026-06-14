@@ -3,7 +3,7 @@ FROM oven/bun:1
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm install
+RUN bun install
 
 COPY . .
 
