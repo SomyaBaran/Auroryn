@@ -7,7 +7,7 @@ RUN bun install
 
 COPY . .
 
-RUN bunx prisma generate --config prisma.config.ts
+RUN bunx prisma generate
 
 EXPOSE 3000
 
