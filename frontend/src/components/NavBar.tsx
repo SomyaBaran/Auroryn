@@ -23,7 +23,7 @@ export function Navbar() {
         });
     };
 
-    const navItems = ["Home", "About", "Contact", "Query"];
+    const navItems = ["Home", "About", "Contact", "Profile"];
 
     return (
         <div className="flex justify-center pt-5 fixed top-0 w-full">
@@ -45,7 +45,7 @@ export function Navbar() {
                 {navItems.map((item) => (
                     <a
                         key={item}
-                        href={`${item}`}
+                        href={item === "Profile" ? "/dashboard" : `/${item.toLowerCase()}`}
                         onMouseEnter={handleHover}
                         className="px-3 py-2 text-white/80 z-10"
                     >
