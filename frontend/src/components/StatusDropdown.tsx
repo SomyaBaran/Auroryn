@@ -111,7 +111,7 @@ export function LogoutDropdown() {
     const handleLogout = () => {
         setOpen(false);
         logout();
-        navigate("/auth")
+        navigate("/")
     }
     return (
         <div className="relative">

@@ -15,7 +15,7 @@ export default function AuthCard({ onSuccess }: { onSuccess?: () => void }) {
     const navigate = useNavigate();
 
     const handleRegister = async () => {
-        if (!email || !password || !username) {
+        if (email && password && username) {
             const data = await SignUpUser(email, password, username);
             localStorage.setItem("token", data.token);
 
