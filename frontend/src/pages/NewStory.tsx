@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import BlockNoteEditor from "../components/BlockNoteEditor";
 import logo from "../assets/image.png";
-import "../app.css";
+import "../App.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { CreatePost } from "../api/post";
 import { useLoggedIn } from "../hooks/useLoggedIn";
