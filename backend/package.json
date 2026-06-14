@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "bun src/index.ts",
-    "start": "bunx prisma migrate deploy && bun src/index.ts"
+    "start": "bunx prisma migrate deploy --schema=prisma/schema.prisma && bun src/index.ts"
   },
   "keywords": [],
   "author": "",
