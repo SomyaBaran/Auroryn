@@ -1,14 +1,11 @@
+import "dotenv/config";
 import express from "express";
 import { Signup } from "./controllers/authControllers";
 import { Signin } from "./controllers/authControllers";
 import cors from "cors";
 import { middleware } from "./middlewares/middleware";
 import { blogRouter } from "./routes/blogRoutes";
-import { PrismaClient } from "../generated/prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
-const prisma = new PrismaClient({ adapter });
+import { prisma } from "../lib/prisma";
 
 const app = express();
 
@@ -52,3 +49,4 @@ app.get("/check", middleware, async (req, res) => {
 app.listen(3000, () => {
     console.log("Port is listening on 3000");
 });
+process.stdin.resume();
