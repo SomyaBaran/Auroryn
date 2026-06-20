@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cors({
     origin: ["http://localhost:5173", "https://auroryn.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use("/blog", blogRouter);
 
@@ -49,4 +50,3 @@ app.get("/check", middleware, async (req, res) => {
 app.listen(3000, () => {
     console.log("Port is listening on 3000");
 });
-process.stdin.resume();
